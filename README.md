@@ -9,7 +9,7 @@ Secção ensinada e orientada por [André Sier](https://andre-sier.com).
 Materiais do curso fornecidos aos alunos da UC Computação Multimédia na licença MIT. Materiais do curso disponibilizadas publicamente a qualquer outra pessoa sem ter sido aluno da UC neste ano lectivo na licença CC-BY-NC-ND.
 
 
-# Multimedia-Computation-fbaul2324
+# Multimedia-Computation-fbaul2425
 
 UC Multimedia Computing section dedicated to programming interactive systems and playable environments. FBAUL 2024-25.
 
