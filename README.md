@@ -1,6 +1,6 @@
 # Computação-Multimédia-fbaul2324
 
-Secção da UC Computação Multimédia dedicada à programação de sistemas interactivos e ambientes jogáveis. FBAUL 2023-24.
+Secção da UC Computação Multimédia dedicada à programação de sistemas interactivos e ambientes jogáveis. FBAUL 2024-25.
 
 Secção ensinada e orientada por [André Sier](https://andre-sier.com).
 
@@ -11,7 +11,7 @@ Materiais do curso fornecidos aos alunos da UC Computação Multimédia na licen
 
 # Multimedia-Computation-fbaul2324
 
-UC Multimedia Computing section dedicated to programming interactive systems and playable environments. FBAUL 2023-24.
+UC Multimedia Computing section dedicated to programming interactive systems and playable environments. FBAUL 2024-25.
 
 Section taught and guided by [André Sier](https://andre-sier.com).
 
