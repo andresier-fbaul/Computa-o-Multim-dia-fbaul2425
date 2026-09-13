@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1rbk46a6roef"]
+
+[ext_resource type="Texture2D" uid="uid://bg26a66urs3hv" path="res://icon.svg" id="1_nturv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_houyi"]
+albedo_texture = ExtResource("1_nturv")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvctq"]
+material = SubResource("StandardMaterial3D_houyi")
+size = Vector3(5, 20, 5)
+
+[node name="predio" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.0328, 0)
+mesh = SubResource("BoxMesh_xvctq")

@@ -1,0 +1,181 @@
+[gd_scene load_steps=17 format=3 uid="uid://3cxbfsb06tpu"]
+
+[ext_resource type="Texture2D" uid="uid://dmqadvdgatmd8" path="res://icon.svg" id="1_yxejl"]
+[ext_resource type="PackedScene" uid="uid://dwa62yrqglhoy" path="res://tenda.tscn" id="2_h7une"]
+[ext_resource type="PackedScene" uid="uid://65vvgrkr15t3" path="res://tenda_verde.tscn" id="3_ekqo1"]
+[ext_resource type="PackedScene" uid="uid://bkfrmg6pm0yfx" path="res://terreno.glb" id="4_davk5"]
+[ext_resource type="PackedScene" uid="uid://b0e3bd2ka2f2m" path="res://terreno2.glb" id="5_tlf3b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1icn"]
+sky_top_color = Color(0.249999, 0.278557, 1, 1)
+sky_horizon_color = Color(0.633215, 0.7254, 0.9169, 1)
+sky_energy_multiplier = 1.8
+ground_bottom_color = Color(0.282862, 0.623045, 0.6676, 1)
+ground_horizon_color = Color(0.633215, 0.7254, 0.9169, 1)
+
+[sub_resource type="Sky" id="Sky_1vt56"]
+sky_material = SubResource("ProceduralSkyMaterial_s1icn")
+
+[sub_resource type="Environment" id="Environment_1ja5s"]
+background_mode = 2
+sky = SubResource("Sky_1vt56")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_energy = 8.0
+fog_sun_scatter = 2.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_4eqqr"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hgptb"]
+radius = 2.5
+height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mntvw"]
+transparency = 1
+albedo_texture = ExtResource("1_yxejl")
+uv1_scale = Vector3(3, 3, 3)
+uv1_offset = Vector3(0.185, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyy0b"]
+albedo_color = Color(0.864485, 0.421327, 0.150709, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4vwlg"]
+material = SubResource("StandardMaterial3D_xyy0b")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_3vcb4"]
+resource_name = "animcam1"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.03333, 7.53333, 9.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.10018, 2.88827, 133.559), Vector3(-5.10018, 2.88827, 5.13728), Vector3(-5.10018, 2.88827, 1.95385), Vector3(-5.10018, 2.88827, -1.98875)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.03333, 7.53333, 9.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -2.50097, 0), Vector3(0, -2.50097, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dp6tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.10018, 2.88827, 133.559)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el1bu"]
+_data = {
+"RESET": SubResource("Animation_dp6tt"),
+"animcam1": SubResource("Animation_3vcb4")
+}
+
+[node name="raiz3d01" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ja5s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.956814, -0.106543, 0.270474, 0, 0.930418, 0.366501, -0.290702, 0.350673, -0.890236, 0, 0, 0)
+light_color = Color(0.932557, 0.991039, 7.70092e-07, 1)
+shadow_enabled = true
+
+[node name="chao" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80094, 2.1692, 1.27246)
+mesh = SubResource("BoxMesh_4eqqr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04761, 4.5452, 2.86053)
+mesh = SubResource("SphereMesh_hgptb")
+surface_material_override/0 = SubResource("StandardMaterial3D_mntvw")
+
+[node name="tenda" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.76792, 0)
+
+[node name="tenda2" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00897, 3.7175, -4.33994)
+
+[node name="tenda3" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82851, 4.19385, -4.36249)
+
+[node name="tenda4" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(0.894178, 0, 0.447712, 0, 1, 0, -0.447712, 0, 0.894178, -11.8006, 2.9681, 0.745737)
+
+[node name="tenda5" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79327, 4.39898, -4.22652)
+
+[node name="tenda6" parent="." instance=ExtResource("2_h7une")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42183, 4.39269, -4.05605)
+
+[node name="tenda7" parent="." instance=ExtResource("3_ekqo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49097, 3.79539, -4.4495)
+
+[node name="tenda8" parent="." instance=ExtResource("3_ekqo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2939, 3.79863, -5.21528)
+
+[node name="tenda9" parent="." instance=ExtResource("3_ekqo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375612, 3.79187, -4.42021)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10018, 2.88827, 133.559)
+fov = 84.8
+
+[node name="terreno" parent="." instance=ExtResource("4_davk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3097, 3.16943, -4.00548)
+
+[node name="terreno2" parent="." instance=ExtResource("5_tlf3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76444, -9.53674e-07, 0.531861)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57677, 3.13903, 3.06357)
+amount = 20
+lifetime = 0.5
+mesh = SubResource("BoxMesh_4vwlg")
+direction = Vector3(0, -10, 0)
+spread = 23.43
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+radial_accel_max = 11.83
+
+[node name="AnimPlayerCAMERA" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_el1bu")
+}
+autoplay = "animcam1"

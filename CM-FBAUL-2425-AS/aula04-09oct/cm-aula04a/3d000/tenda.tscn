@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwa62yrqglhoy"]
+
+[ext_resource type="Texture2D" uid="uid://rappvqj5y5yp" path="res://tenda.png" id="1_lagxe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06avc"]
+albedo_color = Color(0.644488, 0.639505, 0.364659, 1)
+albedo_texture = ExtResource("1_lagxe")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_puws4"]
+material = SubResource("StandardMaterial3D_06avc")
+top_radius = 0.1
+bottom_radius = 1.0
+radial_segments = 6
+
+[node name="tenda" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_puws4")

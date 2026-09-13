@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cudb2jdxilf0d"]
+
+[ext_resource type="Texture2D" uid="uid://buwa7pip2kehh" path="res://icon.svg" id="1_xeah1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tbbip"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_frafv"]
+width = 32
+height = 32
+noise = SubResource("FastNoiseLite_tbbip")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_18d2r"]
+frequency = 0.0888
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hx77a"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_18d2r")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(58, 386)
+rotation = -1.1119
+scale = Vector2(2.07239, 3.54916)
+color = Color(0.894118, 0.576471, 0.486275, 0.882353)
+polygon = PackedVector2Array(51, 191, 100, 140, 70, 85, 159, 32, 141, -12, 6, 131)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(329, 250)
+scale = Vector2(6.96875, 5.4375)
+texture = SubResource("NoiseTexture2D_frafv")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(477, 487)
+texture = ExtResource("1_xeah1")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(880, 310)
+scale = Vector2(6.39062, 5.9375)
+texture = SubResource("NoiseTexture2D_hx77a")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(228, 514)
+texture = ExtResource("1_xeah1")

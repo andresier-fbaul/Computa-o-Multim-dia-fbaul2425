@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2p1mbav1n0q"]
+
+[ext_resource type="Texture2D" uid="uid://dcwu1kgt71icb" path="res://icon.svg" id="1_2i3oc"]
+[ext_resource type="Texture2D" uid="uid://bixrwlw55s5r0" path="res://ANTHEMUSA84099005_1474463266058028_3000430368674073574_n.jpg" id="2_u3sot"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ffe1m"]
+frequency = 0.0457
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2wdsr"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_ffe1m")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5aqjo"]
+
+[node name="PrimeiraCENA" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 757.0
+offset_top = 264.0
+offset_right = 1053.0
+offset_bottom = 463.0
+color = Color(0, 1, 0.105882, 0.513726)
+
+[node name="Iconnoise" type="Sprite2D" parent="."]
+position = Vector2(411, 204)
+texture = SubResource("NoiseTexture2D_2wdsr")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_5aqjo")
+position = Vector2(876, 355)
+texture = ExtResource("1_2i3oc")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(441, 449)
+texture = ExtResource("1_2i3oc")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(758, 63)
+texture = ExtResource("1_2i3oc")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(560, 45)
+color = Color(0.842577, 0.0608738, 1, 1)
+polygon = PackedVector2Array(84, 131, 169, 48, 169, -69, 54, -59, 76, -89, 2, -80, -121, -19, -36, 58, 37, 40, 72, 85, 27, 133, -140, 82, -137, 140, -17, 139, -59, 247, 11, 509, -62, 610, 269, 612, 35, 506, -46, 249, -10, 149, 315, 357, 26, 145)
+
+[node name="Anthemusa8409900514744632660580283000430368674073574N" type="Sprite2D" parent="."]
+position = Vector2(-126, 177)
+texture = ExtResource("2_u3sot")

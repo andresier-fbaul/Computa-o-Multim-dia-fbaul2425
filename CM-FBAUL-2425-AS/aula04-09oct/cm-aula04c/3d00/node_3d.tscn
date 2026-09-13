@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://d23a03ewl26qw"]
+
+[ext_resource type="Texture2D" uid="uid://dneqsbwcf2u2s" path="res://icon.svg" id="1_1qmb4"]
+[ext_resource type="Texture2D" uid="uid://p4n1aj0p2tng" path="res://tenda.png" id="2_5rcf3"]
+[ext_resource type="PackedScene" uid="uid://domh855e02tds" path="res://tenda.tscn" id="2_xuvn1"]
+[ext_resource type="PackedScene" uid="uid://cqja850mj07i2" path="res://tendaverde.tscn" id="4_b02g5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1drei"]
+sky_top_color = Color(0, 0.743453, 0.285601, 1)
+sky_horizon_color = Color(0.584032, 0.79603, 0.802882, 1)
+ground_bottom_color = Color(0.33613, 0.440667, 0.925927, 1)
+ground_horizon_color = Color(0.584032, 0.79603, 0.802882, 1)
+
+[sub_resource type="Sky" id="Sky_s0618"]
+sky_material = SubResource("ProceduralSkyMaterial_1drei")
+
+[sub_resource type="Environment" id="Environment_kms3p"]
+background_mode = 2
+sky = SubResource("Sky_s0618")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_4vqqn"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0eahc"]
+radius = 2.5
+height = 5.0
+radial_segments = 4
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52rl0"]
+albedo_color = Color(0.776471, 0.298039, 0.623529, 1)
+albedo_texture = ExtResource("1_1qmb4")
+uv1_scale = Vector3(25, 25, 25)
+uv1_offset = Vector3(1.73, 0, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_efqrc"]
+top_radius = 0.2
+bottom_radius = 2.5
+height = 3.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1sud"]
+albedo_color = Color(0, 0.792483, 0.108447, 1)
+albedo_texture = ExtResource("2_5rcf3")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kms3p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.972046, -0.0944729, -0.214946, -0.138783, 0.969617, 0.201452, 0.189383, 0.225651, -0.955623, 0, 0, 0)
+light_color = Color(0.957194, 0.9017, 0.80501, 1)
+light_energy = 9.85
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88918, 3.36861)
+fov = 64.5
+
+[node name="chao" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4vqqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.943008, -0.33277, 0, 0.33277, 0.943008, 1.19024, 4.49104, 0.478138)
+mesh = SubResource("SphereMesh_0eahc")
+skeleton = NodePath("../chao")
+surface_material_override/0 = SubResource("StandardMaterial3D_52rl0")
+
+[node name="tenda" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31874, 2.28901, -6.92058)
+mesh = SubResource("CylinderMesh_efqrc")
+surface_material_override/0 = SubResource("StandardMaterial3D_j1sud")
+
+[node name="tenda2" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3037, 1.61719, -10.9517)
+
+[node name="tenda3" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.36793, 2.10245, -5.91993)
+
+[node name="tenda4" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57965, 1.85266, -9.00029)
+
+[node name="tenda5" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23187, 2.18509, -2.93793)
+
+[node name="tenda6" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00309563, 2.11001, -6.88991)

@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwxehqjr5f3k0"]
+
+[ext_resource type="Texture2D" uid="uid://b37efux4oqs0s" path="res://R0010450.JPG" id="1_2p5hb"]
+[ext_resource type="Texture2D" uid="uid://b2old44vuvjn5" path="res://icon.svg" id="2_5gv68"]
+[ext_resource type="Script" path="res://icon.gd" id="3_3wlhw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m0wm0"]
+frequency = 0.058
+offset = Vector3(25.75, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a6vcg"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_m0wm0")
+
+[sub_resource type="Animation" id="Animation_mg2v8"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.628319, 0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.657357, 0.241187, 0.542405, 1), Color(0.903237, 0.920026, 0.364212, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kinpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.628319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.657357, 0.241187, 0.542405, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwxrv"]
+_data = {
+"RESET": SubResource("Animation_kinpc"),
+"new_animation": SubResource("Animation_mg2v8")
+}
+
+[node name="CENA2" type="Node2D"]
+
+[node name="R0010450" type="Sprite2D" parent="."]
+position = Vector2(600.75, 349.25)
+scale = Vector2(0.175074, 0.214137)
+texture = ExtResource("1_2p5hb")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.657357, 0.241187, 0.542405, 1)
+position = Vector2(848, 122)
+rotation = -0.628319
+texture = ExtResource("2_5gv68")
+script = ExtResource("3_3wlhw")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(486, 330)
+texture = ExtResource("2_5gv68")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(950, 505.5)
+scale = Vector2(3.42188, 3.07031)
+texture = SubResource("NoiseTexture2D_a6vcg")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(256, 296)
+rotation = -0.362342
+scale = Vector2(0.172906, 0.41749)
+color = Color(0.988235, 0.380392, 0.898039, 1)
+polygon = PackedVector2Array(-305, 211, -207, 308, -166, 139, -74, 72, -92, 312, -272, 620, 31, 620, -23, 326, 18, 74, 213, 335, 649, 337, 108, 54, 893, 106, 114, -159, 204, -411, -14, -153, -620, -251, -126, -9, -579, 92)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(440, 249)
+rotation = -0.0333045
+scale = Vector2(0.172906, 0.41749)
+color = Color(0.988235, 0.380392, 0.898039, 1)
+polygon = PackedVector2Array(-305, 211, -207, 308, -166, 139, -74, 72, -92, 312, -272, 620, 31, 620, -23, 326, 18, 74, 213, 335, 649, 337, 108, 54, 893, 106, 114, -159, 204, -411, -14, -153, -620, -251, -126, -9, -579, 92)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(631, 276)
+rotation = 0.292334
+scale = Vector2(0.172906, 0.41749)
+color = Color(0.988235, 0.380392, 0.898039, 1)
+polygon = PackedVector2Array(-305, 211, -207, 308, -166, 139, -74, 72, -92, 312, -272, 620, 31, 620, -23, 326, 18, 74, 213, 335, 649, 337, 108, 54, 893, 106, 114, -159, 204, -411, -14, -153, -620, -251, -126, -9, -579, 92)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwxrv")
+}
+autoplay = "new_animation"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx2db6diqxlq1"]
+
+[ext_resource type="PackedScene" uid="uid://b2p1mbav1n0q" path="res://primeira_cena.tscn" id="1_una1r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hs1yp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_v1435"]
+sky_material = SubResource("ProceduralSkyMaterial_hs1yp")
+
+[sub_resource type="Environment" id="Environment_c45sp"]
+background_mode = 2
+sky = SubResource("Sky_v1435")
+tonemap_mode = 2
+
+[node name="3d1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c45sp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.243615, -0.891444, 0.382073, 0, 0.393942, 0.919135, -0.969872, 0.223915, -0.0959702, 0, 0, 0)
+light_color = Color(0.914062, 0.897944, 0.129027, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.90419)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PrimeiraCENA" parent="CanvasLayer" instance=ExtResource("1_una1r")]

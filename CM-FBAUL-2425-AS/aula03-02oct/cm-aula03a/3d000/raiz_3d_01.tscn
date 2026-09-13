@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://3cxbfsb06tpu"]
+
+[ext_resource type="Texture2D" uid="uid://dmqadvdgatmd8" path="res://icon.svg" id="1_yxejl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4eqqr"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hgptb"]
+radius = 2.5
+height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mntvw"]
+transparency = 1
+albedo_texture = ExtResource("1_yxejl")
+uv1_scale = Vector3(3, 3, 3)
+uv1_offset = Vector3(0.185, 0, 0)
+
+[node name="raiz3d01" type="Node3D"]
+
+[node name="chao" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80094, 2.1692, 1.27246)
+mesh = SubResource("BoxMesh_4eqqr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04761, 4.5452, 2.86053)
+mesh = SubResource("SphereMesh_hgptb")
+surface_material_override/0 = SubResource("StandardMaterial3D_mntvw")

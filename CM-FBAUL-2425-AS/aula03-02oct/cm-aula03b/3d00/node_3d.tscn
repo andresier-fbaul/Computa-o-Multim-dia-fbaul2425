@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi5228gvfci75"]
+
+[ext_resource type="Texture2D" uid="uid://bg26a66urs3hv" path="res://icon.svg" id="1_vk6pr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_x1p35"]
+radius = 5.0
+height = 10.0
+radial_segments = 4
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl7qk"]
+albedo_color = Color(0.787846, 0.603509, 0.283522, 1)
+albedo_texture = ExtResource("1_vk6pr")
+uv1_scale = Vector3(5, 5, 5)
+uv1_offset = Vector3(1.175, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcf5b"]
+size = Vector3(50, 3, 50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="esfera" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, -0.00117774, 0.000328205, 0.00117765, 0.999999, 0.000290598, -0.00032854, -0.000290218, 1, -9.44626, 24.8236, 36.1793)
+mesh = SubResource("SphereMesh_x1p35")
+skeleton = NodePath("../chao")
+surface_material_override/0 = SubResource("StandardMaterial3D_vl7qk")
+
+[node name="chao" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, -0.00117774, 0.000328205, 0.00121104, 0.917321, -0.398146, 0.000167852, 0.398146, 0.917322, 2.84739, 6.80816, 11.9158)
+mesh = SubResource("BoxMesh_qcf5b")

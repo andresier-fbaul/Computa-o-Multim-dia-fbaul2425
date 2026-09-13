@@ -1,0 +1,186 @@
+[gd_scene load_steps=20 format=3 uid="uid://d23a03ewl26qw"]
+
+[ext_resource type="Texture2D" uid="uid://dneqsbwcf2u2s" path="res://icon.svg" id="1_1qmb4"]
+[ext_resource type="Texture2D" uid="uid://p4n1aj0p2tng" path="res://tenda.png" id="2_5rcf3"]
+[ext_resource type="PackedScene" uid="uid://domh855e02tds" path="res://tenda.tscn" id="2_xuvn1"]
+[ext_resource type="PackedScene" uid="uid://cqja850mj07i2" path="res://tendaverde.tscn" id="4_b02g5"]
+[ext_resource type="PackedScene" uid="uid://qndiagsks006" path="res://terreno-c.glb" id="5_qguel"]
+[ext_resource type="PackedScene" uid="uid://c3uuksxs2yxdi" path="res://terreno-c2.glb" id="6_7nbvu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1drei"]
+sky_top_color = Color(0, 0.743453, 0.285601, 1)
+sky_horizon_color = Color(0.584032, 0.79603, 0.802882, 1)
+ground_bottom_color = Color(0.33613, 0.440667, 0.925927, 1)
+ground_horizon_color = Color(0.584032, 0.79603, 0.802882, 1)
+
+[sub_resource type="Sky" id="Sky_s0618"]
+sky_material = SubResource("ProceduralSkyMaterial_1drei")
+
+[sub_resource type="Environment" id="Environment_kms3p"]
+background_mode = 2
+sky = SubResource("Sky_s0618")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_l3ysy"]
+resource_name = "camanim1"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.53333, 3.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.63486, 1.88918, 18.9247), Vector3(0.784954, 2.43489, 1.97849), Vector3(0.756811, 2.33257, -1.59434)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.53333, 3.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.846745, -2.47964, 0.470133)]
+}
+
+[sub_resource type="Animation" id="Animation_cjdwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.63486, 1.88918, 18.9247)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f68wv"]
+_data = {
+"RESET": SubResource("Animation_cjdwo"),
+"camanim1": SubResource("Animation_l3ysy")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_4vqqn"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0eahc"]
+radius = 2.5
+height = 5.0
+radial_segments = 4
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52rl0"]
+albedo_color = Color(0.776471, 0.298039, 0.623529, 1)
+albedo_texture = ExtResource("1_1qmb4")
+uv1_scale = Vector3(25, 25, 25)
+uv1_offset = Vector3(1.73, 0, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_efqrc"]
+top_radius = 0.2
+bottom_radius = 2.5
+height = 3.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1sud"]
+albedo_color = Color(0, 0.792483, 0.108447, 1)
+albedo_texture = ExtResource("2_5rcf3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65yb0"]
+albedo_color = Color(0.733333, 0.478431, 0.0117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p8m5p"]
+material = SubResource("StandardMaterial3D_65yb0")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kms3p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.972046, -0.0944729, -0.214946, -0.138783, 0.969617, 0.201452, 0.189383, 0.225651, -0.955623, 0, 0, 0)
+light_color = Color(0.957194, 0.9017, 0.80501, 1)
+light_energy = 9.85
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63486, 1.88918, 18.9247)
+fov = 64.5
+
+[node name="AnimationPlayerCAMERA" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_f68wv")
+}
+autoplay = "camanim1"
+
+[node name="chao" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4vqqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.943008, -0.33277, 0, 0.33277, 0.943008, 1.19024, 4.49104, 0.478138)
+mesh = SubResource("SphereMesh_0eahc")
+skeleton = NodePath("../chao")
+surface_material_override/0 = SubResource("StandardMaterial3D_52rl0")
+
+[node name="tenda" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31874, 2.28901, -6.92058)
+mesh = SubResource("CylinderMesh_efqrc")
+surface_material_override/0 = SubResource("StandardMaterial3D_j1sud")
+
+[node name="tenda2" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3037, 1.61719, -10.9517)
+
+[node name="tenda3" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.36793, 2.10245, -5.91993)
+
+[node name="tenda4" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57965, 1.85266, -9.00029)
+
+[node name="tenda5" parent="." instance=ExtResource("4_b02g5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23187, 2.18509, -2.93793)
+
+[node name="tenda6" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00309563, 2.11001, -6.88991)
+
+[node name="tenda7" parent="." instance=ExtResource("2_xuvn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96845, 1.77145, 7.53316)
+
+[node name="terreno-c" parent="." instance=ExtResource("5_qguel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37971, 0.401978, 16.9708)
+
+[node name="terreno-c2" parent="." instance=ExtResource("6_7nbvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13174, 1.28619, -3.02931)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.13264, 0)
+amount = 1000
+lifetime = 3.0
+mesh = SubResource("BoxMesh_p8m5p")
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 50)
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_max = 2.0

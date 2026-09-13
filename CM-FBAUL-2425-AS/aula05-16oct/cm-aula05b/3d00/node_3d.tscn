@@ -1,0 +1,187 @@
+[gd_scene load_steps=19 format=3 uid="uid://bi5228gvfci75"]
+
+[ext_resource type="Texture2D" uid="uid://bg26a66urs3hv" path="res://icon.svg" id="1_vk6pr"]
+[ext_resource type="Texture2D" uid="uid://b8t1lh4mamrce" path="res://tenda.png" id="2_0mewk"]
+[ext_resource type="PackedScene" uid="uid://nb0fxgu8fwql" path="res://tenda.tscn" id="3_6524v"]
+[ext_resource type="PackedScene" uid="uid://ba4lsoxgj834s" path="res://tenda_verde.tscn" id="4_u7tkm"]
+[ext_resource type="PackedScene" uid="uid://y37exkweeyhc" path="res://terreno-b.glb" id="5_0mpkd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6f7n"]
+sky_top_color = Color(0.705717, 0.788951, 0.251947, 1)
+sky_horizon_color = Color(0.880744, 0.753509, 0.754592, 1)
+sky_energy_multiplier = 1.65
+ground_bottom_color = Color(0.817258, 0.225083, 0.766423, 1)
+ground_horizon_color = Color(0.880744, 0.753509, 0.754592, 1)
+
+[sub_resource type="Sky" id="Sky_kvi3t"]
+sky_material = SubResource("ProceduralSkyMaterial_j6f7n")
+
+[sub_resource type="Environment" id="Environment_ag2iy"]
+background_mode = 2
+sky = SubResource("Sky_kvi3t")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcf5b"]
+size = Vector3(50, 3, 50)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x1p35"]
+radius = 5.0
+height = 10.0
+radial_segments = 4
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl7qk"]
+albedo_color = Color(0.787846, 0.603509, 0.283522, 1)
+albedo_texture = ExtResource("1_vk6pr")
+uv1_scale = Vector3(5, 5, 5)
+uv1_offset = Vector3(1.175, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tq2hp"]
+albedo_texture = ExtResource("2_0mewk")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r8abt"]
+material = SubResource("StandardMaterial3D_tq2hp")
+top_radius = 0.1
+bottom_radius = 3.0
+height = 3.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fotou"]
+albedo_color = Color(0.764706, 0.584314, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_so8bp"]
+material = SubResource("StandardMaterial3D_fotou")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_jqri7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.5539, 10.9251, 43.5115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p1muj"]
+resource_name = "camanim1"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.93333, 4.36667, 6.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(12.5539, 10.9251, 43.5115), Vector3(12.5539, 10.9251, 5.80038), Vector3(4.914, 6.38, 5.8), Vector3(12.5539, 10.9251, 5.80038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0750841, 2.43194, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20qee"]
+_data = {
+"RESET": SubResource("Animation_jqri7"),
+"camanim1": SubResource("Animation_p1muj")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ag2iy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.62932, -0.24273, 0.738267, 0, 0.949972, 0.312335, -0.777146, 0.196559, -0.597837, 0, 0, 0)
+light_color = Color(0.951602, 0.442355, 0.74161, 1)
+shadow_enabled = true
+
+[node name="chao" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, -0.00117774, 0.000328205, 0.00116988, 0.999735, 0.0229956, -0.000355193, -0.0229953, 0.999736, 2.84739, 6.80816, 11.9158)
+mesh = SubResource("BoxMesh_qcf5b")
+
+[node name="esfera" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, -0.00117774, 0.000328205, 0.000949791, 0.917368, 0.398039, -0.000769867, -0.398038, 0.917369, -9.44626, 32.9884, 27.0111)
+mesh = SubResource("SphereMesh_x1p35")
+skeleton = NodePath("../chao")
+surface_material_override/0 = SubResource("StandardMaterial3D_vl7qk")
+
+[node name="tenda" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.60131, 0)
+mesh = SubResource("CylinderMesh_r8abt")
+
+[node name="tenda2" parent="." instance=ExtResource("3_6524v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3495, 9.28464, -5.00774)
+
+[node name="tenda3" parent="." instance=ExtResource("3_6524v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08201, 9.35355, -8.74938)
+
+[node name="tenda4" parent="." instance=ExtResource("3_6524v")]
+transform = Transform3D(0.999477, 0.0323524, 0, -0.0323524, 0.999477, 0, 0, 0, 1, 22.1135, 9.53537, 5.23477)
+
+[node name="tenda5" parent="." instance=ExtResource("4_u7tkm")]
+transform = Transform3D(0.999477, 0.0323524, 0, -0.0323524, 0.999477, 0, 0, 0, 1, 12.8527, 9.65338, 19.0856)
+
+[node name="tenda6" parent="." instance=ExtResource("4_u7tkm")]
+transform = Transform3D(0.999477, 0.0323524, 0, -0.0323524, 0.999477, 0, 0, 0, 1, 22.4969, 9.85305, 16.2613)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5539, 10.9251, 43.5115)
+
+[node name="tenda7" parent="." instance=ExtResource("4_u7tkm")]
+transform = Transform3D(0.999477, 0.0323524, 0, -0.0323524, 0.999477, 0, 0, 0, 1, 5, 10.1163, 25)
+
+[node name="terreno-b" parent="." instance=ExtResource("5_0mpkd")]
+transform = Transform3D(1, 0, 0, 0, -0.0828952, 0.996558, 0, -0.996558, -0.0828952, 23.5386, 4.57578, 14.413)
+
+[node name="terreno-b2" parent="." instance=ExtResource("5_0mpkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.902, 4.40376, 2.86583)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0108, 14.6795, -1.27313)
+amount = 1000
+mesh = SubResource("BoxMesh_so8bp")
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 50)
+direction = Vector3(0, -1, 0)
+spread = 29.09
+gravity = Vector3(0, 1, 0)
+initial_velocity_max = 1.0
+angular_velocity_min = 43.64
+angular_velocity_max = 43.64
+
+[node name="AnimationPlayerCAMERA" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_20qee")
+}
+autoplay = "camanim1"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://domh855e02tds"]
+
+[ext_resource type="Texture2D" uid="uid://p4n1aj0p2tng" path="res://tenda.png" id="1_1hryc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_efqrc"]
+top_radius = 0.2
+bottom_radius = 2.5
+height = 3.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1sud"]
+albedo_texture = ExtResource("1_1hryc")
+
+[node name="tenda" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_efqrc")
+surface_material_override/0 = SubResource("StandardMaterial3D_j1sud")
